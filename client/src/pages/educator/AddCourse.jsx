@@ -1,5 +1,6 @@
 import React,{useEffect, useRef, useState} from 'react'
-import uniqid from 'uniqid' //add unique id
+// import uniqid from 'uniqid' //add unique id
+import {v4 as uuidv4} from 'uuid'
 import Quill from 'quill' //write formatted text in description
 import { assets } from '../../assets/assets';
 
@@ -28,7 +29,7 @@ const AddCourse = () => {
       const title = prompt('Enter Chapter Name:');
       if(title){
         const newChapter = {
-          chapterId: uniqid(),
+          chapterId: uuidv4(),
           chapterTitle: title,
           chapterContent:[],
           collapsed:false,
@@ -68,7 +69,7 @@ const AddCourse = () => {
           const newLecture = {
             ...lectureDetails,
             lectureOrder: chapter.chapterContent.length > 0 ? chapter.chapterContent.slice(-1)[0].lectureOrder + 1:1,
-            lectureId: uniqid()
+            lectureId: uuidv4()
           };
           chapter.chapterContent.push(newLecture);
         }
