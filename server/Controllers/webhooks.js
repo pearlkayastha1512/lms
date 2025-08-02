@@ -32,7 +32,7 @@ export const clerkWebhooks = async(req,res) => {
                     imageUrl: data.image_url,
                 }
                 await User.findByIdAndUpdate(data.id,userData)
-                req.json({})
+                res.json({})
                 break;
             }
             case 'user.deleted':{
