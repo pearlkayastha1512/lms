@@ -12,9 +12,11 @@ const userSchema = new mongoose.Schema(
                 ref: 'Course'
             }
         ],
+        
     },{timestamps:true}
 );
 
-const User = mongoose.model('User',userSchema);
+const User = mongoose.model('User',userSchema);//what and what basis
+//the name of the model in database is saved with name of users basically in plural 
 
 export default User

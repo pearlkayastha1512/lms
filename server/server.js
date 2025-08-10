@@ -3,15 +3,20 @@ import cors from 'cors'
 import 'dotenv/config'
 import connectDB from './Configs/mongodb.js'
 import { clerkWebhooks } from './Controllers/webhooks.js'
+import educatorRouter from './Routes/educatorRoutes.js'
+import { clerkMiddleware } from '@clerk/express'
+import connectCloudinary from './Configs/cloudinary.js'
 
 //Initialize express
 const app = express()
 
 //Connect to database
 await connectDB()
+await connectCloudinary()
 
 //Middlewares
-app.use(cors())
+app.use(cors())//allow those whose origin is same 
+app.use(clerkMiddleware())
 
 //Routes
 app.get('/', (req,res)=> res.send("API working"))
@@ -21,6 +26,7 @@ app.use(express.json())
 
 // Clerk Webhook (needs raw body)
 app.post('/clerk', express.raw({ type: 'application/json' }), clerkWebhooks)
+app.use('/api/educator',express.json(),educatorRouter)
 
 
 //PORT 
@@ -29,4 +35,29 @@ const PORT = process.env.PORT || 5050;
 app.listen(PORT, ()=>{
     console.log(`Server is running on port ${PORT}`)
 })
+
+/* 
+class ApiResponse{
+constructor(statusCode,data,message = "Success"){
+this.statusCode = statusCode
+this.data = data
+this.message = message
+this.success = statusCode < 400
+}
+}
+class ApiError extends Error{
+constructor(
+statusCode,
+message = "Something wrong",
+errors = [],
+stack = ""){
+super(message)
+this.statusCode = statusCode
+this.data = null
+this.message = message
+this.success = false,
+this.errors = errors
+}
+}
+*/
 
