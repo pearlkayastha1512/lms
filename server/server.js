@@ -6,6 +6,7 @@ import { clerkWebhooks } from './Controllers/webhooks.js'
 import educatorRouter from './Routes/educatorRoutes.js'
 import { clerkMiddleware } from '@clerk/express'
 import connectCloudinary from './Configs/cloudinary.js'
+import courseRouter from './Routes/courseRoutes.js'
 
 //Initialize express
 const app = express()
@@ -18,15 +19,17 @@ await connectCloudinary()
 app.use(cors())//allow those whose origin is same 
 app.use(clerkMiddleware())
 
+// Clerk Webhook (needs raw body)
+app.post('/clerk', express.raw({ type: 'application/json' }), clerkWebhooks)
 //Routes
-app.get('/', (req,res)=> res.send("API working"))
+
 // Other JSON routes
 app.use(express.json())
 // app.post('/clerk', express.json(),clerkWebhooks)
+app.get('/', (req,res)=> res.send("API working"))
 
-// Clerk Webhook (needs raw body)
-app.post('/clerk', express.raw({ type: 'application/json' }), clerkWebhooks)
 app.use('/api/educator',express.json(),educatorRouter)
+app.use('/api/course',express.json(),courseRouter)
 
 
 //PORT 
