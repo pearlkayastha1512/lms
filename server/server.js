@@ -7,6 +7,7 @@ import educatorRouter from './Routes/educatorRoutes.js'
 import { clerkMiddleware } from '@clerk/express'
 import connectCloudinary from './Configs/cloudinary.js'
 import courseRouter from './Routes/courseRoutes.js'
+import userRouter from './Routes/userRoutes.js'
 
 //Initialize express
 const app = express()
@@ -30,6 +31,7 @@ app.get('/', (req,res)=> res.send("API working"))
 
 app.use('/api/educator',express.json(),educatorRouter)
 app.use('/api/course',express.json(),courseRouter)
+app.use('/api/user',express.json(),userRouter)
 
 
 //PORT 
