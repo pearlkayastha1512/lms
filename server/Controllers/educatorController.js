@@ -5,26 +5,55 @@ import Purchase from '../Models/Purchase.js'
 import User from '../Models/User.js'
 
 //update role to educator
-export const updateRoleToEducator = async (req,res)=>{
-    try{
-        const userId = req.auth.userId
-        await clerkClient.users.updateUserMetadata(userId,{
-            publicMetadata:{
-                role:'educator',
-            }
-        })
-        res.json({success:true,message:'You can publish a course now'})
-    }catch(error){
-        res.json({success:false,message:error.message})
-    }
-}
+// export const updateRoleToEducator = async (req,res)=>{
+//     try{
+//         const userId = req.auth.userId
+//         await clerkClient.users.updateUserMetadata(userId,{
+//             publicMetadata:{
+//                 role:'educator',
+//             }
+//         })
+//         res.json({success:true,message:'You can publish a course now'})
+//     }catch(error){
+//         res.json({success:false,message:error.message})
+//     }
+// }
+export const updateRoleToEducator = async (req, res) => {
+  try {
+    const userId = req.auth.userId; // Clerk User ID
+
+    // 1. Update role in Clerk
+    await clerkClient.users.updateUserMetadata(userId, {
+      publicMetadata: {
+        role: "educator",
+      },
+    });
+
+    // 2. Also update your MongoDB User document
+    const updatedUser = await User.findOneAndUpdate(
+      { clerkId: userId }, // assuming you store Clerk ID in "clerkId"
+      { role: "educator" },
+      { new: true, upsert: true } // upsert ensures a doc exists
+    );
+
+    // 3. Respond
+    res.json({
+      success: true,
+      message: "You can publish a course now",
+      user: updatedUser,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
 
 //Add new course
 export const addCourse = async (req,res)=>{
     try {
         const {courseData} = req.body
         const imageFile = req.file
-        const educatorId = req.auth.userId
+        const {userId} = req.auth()
+        const educatorId = userId
         if(!imageFile){
             return res.json({success:false,message:'Please upload a course thumbnail'})
         }
@@ -51,7 +80,7 @@ export const getEducatorCourses = async(req,res)=>{
     }
 }
 
-//Get educator dashboard data (tota earning, enrolled students, no.of courses)
+//Get educator dashboard data (total earning, enrolled students, no.of courses)
 
 export const educatorDashboardData = async(req,res)=>{
     try {
@@ -114,7 +143,7 @@ export const getEnrolledStudentsData = async(req,res)=>{
         res.json({success:true,enrolledStudents})
 
     } catch (error) {
-        res.json({success:true, message:error.message})
+        res.json({success:false, message:error.message})
     }
 }
 

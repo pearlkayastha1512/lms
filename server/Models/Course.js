@@ -6,6 +6,7 @@ const lectureSchema = new mongoose.Schema({
     lectureUrl: {type: String, required: true},
     lectureDuration: {type: Number, required: true},
     isPreviewFree: {type: Boolean, required: true},
+    lectureOrder: {type:Number , required: true}
 },{_id:false})
 
 const chapterSchema = new mongoose.Schema({
