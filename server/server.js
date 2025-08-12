@@ -21,13 +21,14 @@ app.use(cors())//allow those whose origin is same
 app.use(clerkMiddleware())
 
 // Clerk Webhook (needs raw body)
-app.post('/clerk', express.raw({ type: 'application/json' }), clerkWebhooks)
+//app.post('/clerk', express.raw({ type: 'application/json' }), clerkWebhooks)
 //Routes
 
 // Other JSON routes
-app.use(express.json())
-// app.post('/clerk', express.json(),clerkWebhooks)
+// app.use(express.json())
+
 app.get('/', (req,res)=> res.send("API working"))
+app.post('/clerk', express.json(),clerkWebhooks)
 
 app.use('/api/educator',express.json(),educatorRouter)
 app.use('/api/course',express.json(),courseRouter)
