@@ -58,7 +58,7 @@ const CourseCard = ({ course }) => {
         {/* Educator Name */}
         <p className='text-gray-600 text-sm font-medium 
                       group-hover:text-gray-700 transition-colors duration-200'>
-          Educator name
+          {course.educator?.name || "Unknown Educator"}
         </p>
         
         {/* Rating Section */}

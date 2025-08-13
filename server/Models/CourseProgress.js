@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const courseProgressSchema = new mongoose.Schema({
     userId: {type:String , required: true},
     courseId: {type:String , required: true},
-    completed: {type:String , required: true},
+    completed: {type:String ,default:"in-progress", required: true},
     lectureCompleted: []
 }, {minimize:false});
 

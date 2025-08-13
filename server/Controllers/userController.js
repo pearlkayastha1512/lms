@@ -127,7 +127,8 @@ export const getUserCourseProgress = async(req,res)=>{
 
 //Add User Ratings to Course
 export const addUserRating = async(req,res)=>{
-    const userId = req.auth.userId;
+    // const userId = req.auth.userId;
+    const {userId} = req.auth();
     const {courseId,rating} = req.body;
 
     if(!courseId || !userId || !rating || rating < 1 || rating > 5){

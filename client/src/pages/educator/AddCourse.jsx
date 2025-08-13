@@ -3,11 +3,18 @@ import React,{useEffect, useRef, useState} from 'react'
 import {v4 as uuidv4} from 'uuid'
 import Quill from 'quill' //write formatted text in description
 import { assets } from '../../assets/assets';
+import { AppContext } from '../../context/AppContext'
+import { useContext } from 'react';
+import axios from 'axios'
+import { toast } from 'react-toastify';
+// import { set } from 'mongoose';
 
 const AddCourse = () => {
 
+  const {backendUrl, getToken} = useContext(AppContext);
   const quillRef = useRef(null);
   const editorRef = useRef(null);
+  
 
   const [courseTitle,setCourseTitle]= useState('')
   const [coursePrice,setCoursePrice] = useState(0)
@@ -86,7 +93,42 @@ const AddCourse = () => {
   };
   //slice(-1)-> gives an array of last value and [0] gives an object
   const handleSubmit = async(e) =>{
-    e.preventDefault()
+    try {
+      e.preventDefault()
+      if(!image){
+        toast.error('Thumbnail Not Selected')
+      }
+      const courseData = {
+        courseTitle,
+        courseDescription: quillRef.current.root.innerHTML,
+        coursePrice: Number(coursePrice),
+        discount: Number(discount),
+        courseContent : chapters
+      }
+      const formData = new FormData();
+      formData.append('courseData',JSON.stringify(courseData));
+      formData.append('image',image);
+
+      const token = await getToken();
+      const {data} = await axios.post(`${backendUrl}/api/course/add-course`,formData, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      if(data.success){
+        toast.success(data.message);
+        setCourseTitle('');
+        setCoursePrice(0);
+        setDiscount(0);
+        setImage(null);
+        setChapters([]);
+         quillRef.current.root.innerHTML = '';
+      }else{
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
   useEffect(()=>{
     //initialize quill only once
