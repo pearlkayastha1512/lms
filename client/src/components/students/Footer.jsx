@@ -7,7 +7,7 @@ const Footer = () => {
       <div className='flex flex-col md:flex-row items-start justify-center gap-10 md:gap-32 border-b border-white/30 text-white/80 py-10 px-8 md:px-0 space-y-6 md:space-y-0'>
         <div className='flex flex-col md:items-start items-center w-full gap-4'>
           <img src={assets.logo_dark} alt="logo" />
-          <p className='mt-6 text-center md:text-left text-sm text-white/80 '>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
+          <p className='mt-6 text-center md:text-left text-sm text-white/80 '>Turn curiosity into skills with lessons that fit into your life, not the other way around.</p>
         </div>
         <div className='flex flex-col md:items-start items-center w-full gap-4'>
           <h2 className='font-semibold text-white mb-5'>Company</h2>
