@@ -93,7 +93,8 @@ Promotes sustainable and eco-friendly shopping.
 ✅ Integrated Stripe payments & Cloudinary media storage
 
 ✅ Supports both COD and online payment
+<img width="1439" height="790" alt="Screenshot 2025-08-18 at 12 10 09 PM" src="https://github.com/user-attachments/assets/a5c2aff5-2e3c-4702-859f-b54a0be02973" />
 <img width="1439" height="790" alt="Screenshot 2025-08-18 at 12 10 42 PM" src="https://github.com/user-attachments/assets/a0911492-2e34-41f2-a1f8-a5504b0f6a7a" />
 <img width="1439" height="790" alt="Screenshot 2025-08-18 at 12 10 25 PM" src="https://github.com/user-attachments/assets/9a0d0054-3bbf-43a9-b110-9c55a65577a1" />
 <img width="1439" height="790" alt="Screenshot 2025-08-18 at 12 10 18 PM" src="https://github.com/user-attachments/assets/5f7bdcf6-b42b-422b-b7f4-e8e4d42f2504" />
-<img width="1439" height="790" alt="Screenshot 2025-08-18 at 12 10 09 PM" src="https://github.com/user-attachments/assets/a5c2aff5-2e3c-4702-859f-b54a0be02973" />
+
