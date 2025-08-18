@@ -41,7 +41,7 @@ File Uploads: Cloudinary
 
 Clone the repository:
 
-git clone https://github.com/your-username/LMS.git
+git clone [https://github.com/your-username/LMS.git](https://github.com/pearlkayastha1512/lms)
 cd LMS
 
 
@@ -92,3 +92,19 @@ A platform to bridge educators and learners in one place.
 ✅ Built Stripe-powered payment system for course purchases.
 
 ✅ Implemented educator dashboard for insights.
+
+<img width="1439" height="790" alt="Screenshot 2025-08-18 at 12 26 12 PM" src="https://github.com/user-attachments/assets/2eaa7265-c7dd-4b4d-b091-57b12aa0e745" />
+<img width="1439" height="790" alt="Screenshot 2025-08-18 at 12 26 20 PM" src="https://github.com/user-attachments/assets/40fe4271-de9e-4db8-9d4c-ec869f3ab78b" />
+<img width="1439" height="790" alt="Screenshot 2025-08-18 at 12 26 28 PM" src="https://github.com/user-attachments/assets/2a190b02-7b40-480c-98b7-8a3bf68a90fd" />
+<img width="1439" height="790" alt="Screenshot 2025-08-18 at 12 26 41 PM" src="https://github.com/user-attachments/assets/f366563d-04e2-4a51-901e-975a0f2fb4e0" />
+
+🔗 Live Demo
+https://lms-lime-omega.vercel.app/
+
+👨‍💻 Developed By
+
+Pearl Kayastha
+📜 License
+
+This project is licensed under the MIT License – see the LICENSE file for details.
+
