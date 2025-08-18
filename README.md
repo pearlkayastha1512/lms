@@ -1,27 +1,27 @@
-🛒 Green Cart 🌱
+📚 LMS – Learning Management System
 
-Eco-Friendly Online Grocery Store
+Create, Manage, and Learn Online
 
 📖 About
 
-Green Cart is a full-stack e-commerce platform built to promote the online sale of green vegetables, fruits, and organic products.
-It supports secure payments, order management, and user-friendly shopping features, offering a seamless buying experience.
+This Learning Management System (LMS) enables educators to create and manage courses, while students can enroll, learn, and track progress.
+It integrates authentication with Clerk, secure payments via Stripe, and supports role-based access for seamless learning experiences.
 
 ✨ Features
 
-🛍️ Product Catalog – Browse fresh vegetables, fruits, and related products.
+👩‍🏫 Educator Role – Educators can create, edit, and manage courses.
 
-🔎 Smart Search & Filters – Quickly find items with category and price filters.
+🎓 Student Enrollment – Students can browse and enroll in courses.
 
-🛒 Cart & Checkout – Add items to cart and proceed with flexible payment options.
+📚 Course Management – Includes chapters, lectures, and structured content.
 
-💳 Payment Options – Supports Cash on Delivery (COD) and Stripe-powered online payments.
+💳 Payment Integration – Supports Stripe payments for premium courses.
 
-🚚 Order Management – Tracks placed orders with user-specific details.
+🔑 Authentication – Powered by Clerk (secure login & role-based access).
 
-🏠 Address Management – Add, edit, and save multiple delivery addresses.
+📊 Educator Dashboard – View student enrollments and course statistics.
 
-☁️ Cloudinary Integration – Handles product image uploads.
+☁️ Cloud Integration – Media uploads & course materials management.
 
 🛠️ Tech Stack
 
@@ -31,18 +31,18 @@ Backend: Node.js + Express.js
 
 Database: MongoDB
 
-Authentication: JWT
+Authentication: Clerk
 
-Payments: Stripe (COD + Online Payments)
+Payments: Stripe
 
-Media Management: Cloudinary
+File Uploads: Cloudinary
 
 🚀 Installation & Setup
 
 Clone the repository:
 
-git clone https://github.com/your-username/Green-Cart.git
-cd Green-Cart
+git clone https://github.com/your-username/LMS.git
+cd LMS
 
 
 Install dependencies:
@@ -52,17 +52,14 @@ npm install
 
 Create a .env file and add your environment variables:
 
-JWT_SECRET=your_jwt_secret
-NODE_ENV=development
-SELLER_EMAIL=your_email
-SELLER_PASSWORD=your_password
 MONGODB_URI=your_mongodb_connection_string
-CLOUDINARY_CLOUD_NAME=your_cloudinary_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
+CLERK_API_KEY=your_clerk_key
+CLERK_SECRET_KEY=your_clerk_secret
 STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
 STRIPE_SECRET_KEY=your_stripe_secret_key
 STRIPE_WEBHOOK_SECRET=your_webhook_secret
+JWT_SECRET=your_jwt_secret
+PORT=5000
 
 
 Start the development server:
@@ -70,31 +67,28 @@ Start the development server:
 npm run dev
 
 📂 Project Structure
-GreenCart/
-│── backend/         # Express.js server, routes, and APIs
+LMS/
+│── backend/         # Express.js APIs & routes
 │── frontend/        # React.js client
 │── models/          # MongoDB models
-│── configs/         # Config files (Cloudinary, Stripe, etc.)
+│── controllers/     # Business logic
+│── middlewares/     # Authentication & role handling
+│── configs/         # Clerk, Stripe, Cloudinary configs
 │── public/          # Static assets
 │── README.md        # Documentation
 
 🎯 Use Cases
 
-Farmers & vendors can sell fresh products online.
+Students can enroll and access structured learning content.
 
-Customers get easy access to organic groceries.
+Educators can monetize courses by integrating payments.
 
-Promotes sustainable and eco-friendly shopping.
+A platform to bridge educators and learners in one place.
 
 🏆 Achievements
 
-✅ Successfully deployed & running live 🌍
+✅ Integrated Clerk authentication with secure role-based access.
 
-✅ Integrated Stripe payments & Cloudinary media storage
+✅ Built Stripe-powered payment system for course purchases.
 
-✅ Supports both COD and online payment
-<img width="1439" height="790" alt="Screenshot 2025-08-18 at 12 10 09 PM" src="https://github.com/user-attachments/assets/a5c2aff5-2e3c-4702-859f-b54a0be02973" />
-<img width="1439" height="790" alt="Screenshot 2025-08-18 at 12 10 42 PM" src="https://github.com/user-attachments/assets/a0911492-2e34-41f2-a1f8-a5504b0f6a7a" />
-<img width="1439" height="790" alt="Screenshot 2025-08-18 at 12 10 25 PM" src="https://github.com/user-attachments/assets/9a0d0054-3bbf-43a9-b110-9c55a65577a1" />
-<img width="1439" height="790" alt="Screenshot 2025-08-18 at 12 10 18 PM" src="https://github.com/user-attachments/assets/5f7bdcf6-b42b-422b-b7f4-e8e4d42f2504" />
-
+✅ Implemented educator dashboard for insights.
